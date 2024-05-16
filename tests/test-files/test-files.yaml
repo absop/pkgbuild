@@ -1,0 +1,28 @@
+# The pkgbuild config file for test-files
+
+name: test-files
+version: 1.0.0
+
+files:
+  - execute: a/*.py
+  - require: a/b/
+    from: a/b/*.py
+  - execute: a/b/
+    from: a/b/*.sh
+  - require: a/b/c
+    from: a/b/c/d/
+
+# spec-install:
+#   mkdir -p          %{buildroot}/%{insdir}/a/
+#   cp -rf a/*.py     %{buildroot}/%{insdir}/a/
+#   chmod 744 -R      %{buildroot}/%{insdir}/a/*.py
+
+#   mkdir -p          %{buildroot}/%{insdir}/a/b/
+#   cp -rf a/b/*.py   %{buildroot}/%{insdir}/a/b/
+#   chmod 644 -R      %{buildroot}/%{insdir}/a/b/*.py
+
+#   cp -rf a/b/*.sh   %{buildroot}/%{insdir}/a/b/
+#   chmod 744 -R      %{buildroot}/%{insdir}/a/b/*.sh
+
+#   cp -rf a/b/c/d/   %{buildroot}/%{insdir}/a/b/c
+#   chmod 644 -R      %{buildroot}/%{insdir}/a/b/c
